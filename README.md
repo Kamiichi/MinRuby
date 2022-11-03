@@ -1,0 +1,2 @@
+# MinRuby
+RubyでつくるRubyなんです
