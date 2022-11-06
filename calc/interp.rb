@@ -1,6 +1,7 @@
 require "minruby"
 
 def sum(tree)
+    p(tree)
     if tree[0] == "lit"
         tree[1]
     else # この場合はtree[0] == "+"
