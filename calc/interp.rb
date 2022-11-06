@@ -7,7 +7,24 @@ def sum(tree)
     else # この場合はtree[0] == "+"
         left = sum(tree[1])
         right = sum(tree[2])
+        p(left + right)
         left + right
+    end
+end
+
+def evaluate(tree)
+    if tree[0] == "lit"
+        tree[1]
+    else
+        if tree[0] == "+"
+            left = evaluate(tree[1])
+            right = evaluate(tree[2])
+            left + right
+        else # この場合はtree[0] == "*"
+            left = evaluate(tree[1])
+            right = evaluate(tree[2])
+            left * right
+        end
     end
 end
 
@@ -16,7 +33,7 @@ str = gets
 
 # 計算式の文字列を構文解析して計算の木にする
 tree = minruby_parse(str)
-answer = sum(tree)
+answer = evaluate(tree)
 
 # 計算の木を実行(計算)する
 answer = # ...
