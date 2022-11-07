@@ -27,6 +27,9 @@ def evaluate(tree, env)
         env[tree[1]] = evaluate(tree[2], env)
     when "var_ref"
         env[tree[1]]
+    else
+        p("この演算子は使えないよ")
+        pp(tree[0])
     end
 end
 
