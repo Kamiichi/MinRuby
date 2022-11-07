@@ -37,5 +37,5 @@ str = minruby_load()
 tree = minruby_parse(str)
 
 # 計算の木を実行(計算)する
-env = {"plus_count" => 0}
+env = {}
 evaluate(tree, env)
