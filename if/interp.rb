@@ -2,16 +2,6 @@ require "minruby"
 
 def evaluate(tree, env)
     case tree[0]
-    when "if"
-        if evaluate(tree[1], env)
-            evaluate(tree[2], env)
-        else
-            evaluate(tree[3], env)
-        end
-    when "while"
-        while evaluate(tree[1], env)
-            evaluate(tree[2], env)
-        end
     when "lit"
         tree[1]
     when "+"
@@ -43,6 +33,16 @@ def evaluate(tree, env)
         env[tree[1]] = evaluate(tree[2], env)
     when "var_ref"
         env[tree[1]]
+    when "if"
+        if evaluate(tree[1], env)
+            evaluate(tree[2], env)
+        else
+            evaluate(tree[3], env)
+        end
+    when "while"
+        while evaluate(tree[1], env)
+            evaluate(tree[2], env)
+        end
     else
         p("この演算子は使えないよ")
         pp(tree[0])
