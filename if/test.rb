@@ -1,9 +1,13 @@
-case 42
-when 0
-    p(0)
-when 1
-    p(1)
-else
-    p(2)
+i = 1
+while i < 16
+    if i % 15 == 0
+        p("FizzBuzz")
+    elsif i % 5 == 0
+        p("Buzz")
+    elsif i % 3 == 0
+        p("Fizz")
+    else
+        p(i)
+    end
+    i = i + 1
 end
-    
