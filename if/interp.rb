@@ -47,6 +47,11 @@ def evaluate(tree, env)
         while evaluate(tree[1], env)
             evaluate(tree[2], env)
         end
+    when "while2"
+        evaluate(tree[1], env)
+        while evaluate(tree[1], env)
+            evaluate(tree[2], env)
+        end
     else
         p("この演算子は使えないよ")
         pp(tree[0])
