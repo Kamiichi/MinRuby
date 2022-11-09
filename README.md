@@ -24,3 +24,7 @@ interp.rbには四則演算の他、剰余演算、累乗演算、比較演算�
 minruby_parseの力を借りて構文解析をする。
 tree[0] == var_assignは変数代入の実装
 tree[0] == var_refは変数参照の実装
+
+# Ifディレクトリ
+ifやwhileといった制御構文を実装している。
+MinRubyのcase文は内部的にはifと同じ処理をしている。
