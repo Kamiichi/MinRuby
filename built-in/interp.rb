@@ -32,7 +32,24 @@ def evaluate(tree, genv, lenv)
         end
         mhd = genv[tree[1]]
         if mhd[0] == "builtin"
+            if tree[1] == "fizzbuzz"
+                j = args[0]
+                k = args[1] + 1
+                while j < k
+                    if j % 15 == 0
+                        p("FizzBuzz")
+                    elsif j % 5 == 0
+                        p("Buzz")
+                    elsif j % 3 == 0
+                        p("Fizz")
+                    else
+                        p(j)
+                    end
+                    j = j + 1
+                end
+            else
             minruby_call(mhd[1], args)
+            end
         else
             # 埋める
         end
@@ -76,6 +93,6 @@ str = minruby_load()
 tree = minruby_parse(str)
 
 # 計算の木を実行(計算)する
-genv = { "p" => ["builtin", "p"]}
+genv = { "p" => ["builtin", "p"], "fizzbuzz" => ["builtin", "fizzbuzz"]}
 lenv = {}
 evaluate(tree, genv, lenv)
