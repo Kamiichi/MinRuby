@@ -51,7 +51,13 @@ def evaluate(tree, genv, lenv)
             minruby_call(mhd[1], args)
             end
         else
-            # 埋める
+            params = mhd[1]
+            i = 0
+            while params[i]
+                lenv[params[i]] = args[i]
+                i = i + 1
+            end
+            evaluate(mhd[2], genv, lenv)
         end
     when "func_def"
         genv[tree[1]] = ["user_defined", tree[2], tree[3]]
