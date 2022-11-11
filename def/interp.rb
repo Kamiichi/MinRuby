@@ -33,22 +33,9 @@ def evaluate(tree, genv, lenv)
         mhd = genv[tree[1]]
         if mhd[0] == "builtin"
             if tree[1] == "fizzbuzz"
-                j = args[0]
-                k = args[1] + 1
-                while j < k
-                    if j % 15 == 0
-                        p("FizzBuzz")
-                    elsif j % 5 == 0
-                        p("Buzz")
-                    elsif j % 3 == 0
-                        p("Fizz")
-                    else
-                        p(j)
-                    end
-                    j = j + 1
-                end
+                fizzbuzz(args[0], args[1] + 1)
             else
-            minruby_call(mhd[1], args)
+                minruby_call(mhd[1], args)
             end
         else
             params = mhd[1]
@@ -94,6 +81,21 @@ def evaluate(tree, genv, lenv)
     end
 end
 
+# 組み込み関数としてのfizzbuzz
+def fizzbuzz(j, k)
+    while j < k
+        if j % 15 == 0
+            p("FizzBuzz")
+        elsif j % 5 == 0
+            p("Buzz")
+        elsif j % 3 == 0
+            p("Fizz")
+        else
+            p(j)
+        end
+        j = j + 1
+    end
+end
 # 計算式の文字列を読み込む
 str = minruby_load()
 
