@@ -10,15 +10,17 @@ def evaluate(tree, genv, lenv)
     when "-"
         evaluate(tree[1], genv, lenv) - evaluate(tree[2], genv, lenv)
     when "*"
-        evaluate(tree[1], genv, lenv) * evaluate(tree[2], envgenv, lenv)
+        evaluate(tree[1], genv, lenv) * evaluate(tree[2], genv, lenv)
     when "/"
         evaluate(tree[1], genv, lenv) / evaluate(tree[2], genv, lenv)
     when "%"
         evaluate(tree[1], genv, lenv) % evaluate(tree[2], genv, lenv)
     when "**"
-        evaluate(tree[1], env) ** evaluate(tree[2], genv, lenv)
+        evaluate(tree[1], genv, lenv) ** evaluate(tree[2], genv, lenv)
     when "=="
         evaluate(tree[1], genv, lenv) == evaluate(tree[2], genv, lenv)
+    when "!="
+        evaluate(tree[1], genv, lenv) != evaluate(tree[2], genv, lenv)
     when "<"
         evaluate(tree[1], genv, lenv) < evaluate(tree[2], genv, lenv)
     when ">"
@@ -135,6 +137,13 @@ str = minruby_load()
 tree = minruby_parse(str)
 
 # 計算の木を実行(計算)する
-genv = { "p" => ["builtin", "p"], "fizzbuzz" => ["builtin", "fizzbuzz"]}
+genv = {
+    "p" => ["builtin", "p"],
+    "fizzbuzz" => ["builtin", "fizzbuzz"],
+    "require" => ["builtin", "require"],
+    "minruby_parse" => ["builtin", "minruby_parse"],
+    "minruby_load" => ["builtin", "minruby_load"],
+    "minruby_call" => ["builtin", "minruby_call"]
+}
 lenv = {}
 evaluate(tree, genv, lenv)
