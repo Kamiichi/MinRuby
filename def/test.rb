@@ -1,6 +1,8 @@
-def add(x, y)
-    x + y
+def foo()
+    x = 0
+    p(x)
 end
 
-p(add(1, 1))
-fizzbuzz(1,15)
+x = 1
+foo()
+p(x)
